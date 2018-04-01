@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> markdown小技巧 · 权奥</title><meta name="description" content="markdown小技巧 - gamblenull"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="权奥"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/gamblenull1996" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">markdown小技巧</h1><div class="post-info">Sep 3, 2017</div><div class="post-content"><h4 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h4><p>&emsp;&emsp;前段时间用markdown为实习项目写了项目文档，用到了一些markdown的小技巧，在这里做一个记录。</p>
+<a id="more"></a>
+<h4 id="0x02-自动生成目录-table-of-content"><a href="#0x02-自动生成目录-table-of-content" class="headerlink" title="0x02 自动生成目录(table of content)"></a>0x02 自动生成目录(table of content)</h4><p>&emsp;&emsp;在任何你想生成目录的地方输入<code>[toc]</code>，你会惊奇的发现markdown为你的md文件生成目录，更令人惊喜的是生成的目录会随着你的修改自动更新，在导出为PDF文件之后可以通过点击目录跳转到对应的部分。</p>
+
+<h4 id="0x03-居中显示文字和图片"><a href="#0x03-居中显示文字和图片" class="headerlink" title="0x03 居中显示文字和图片"></a>0x03 居中显示文字和图片</h4><p>&emsp;&emsp;通常情况下markdown中的文字是左对齐的，但是如果我们想让文字居中又该怎么办呢？我们知道markdown文件中是可以插入HTML代码的，所以我们可以用HTML的代码让文字居中。</p>
+<p><code>&lt;center&gt;center标签&lt;/center&gt;</code></p>
+<p><code>&lt;h4 align=&quot;center&quot;&gt;h4标签&lt;h4&gt;</code></p>
+<p><code>&lt;p align=&quot;center&quot;&gt;p标签&lt;p&gt;</code></p>
+<p>&emsp;&emsp;同理图片居中也可以通过类似的方式来完成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div align=center&gt;</span><br><span class="line">	&lt;img width=&quot;100px&quot; src=&quot;https://ws1.sinaimg.cn/large/005NqTFYgy1fj6rx1cg21j30u01hcacd.jpg&quot;&gt;</span><br><span class="line">    &lt;/img&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;效果如下所示</p>
+<div align="center"><br>    <img width="100px" src="https://ws1.sinaimg.cn/large/005NqTFYgy1fj6rx1cg21j30u01hcacd.jpg"><br>    <br></div>
+
+<p>你当然可以更改align的方向，或者任意设置width，height等属性，HTML代码能带给你比<code>![]()</code>更高的灵活性。</p>
+<h4 id="0x04-首行缩进与强制换行"><a href="#0x04-首行缩进与强制换行" class="headerlink" title="0x04 首行缩进与强制换行"></a>0x04 首行缩进与强制换行</h4><p>&emsp;&emsp;以前写markdown的时候，不知道markdown其实是可以实现首行缩进的… 前面说到markdown中可以嵌套HTML，这里实现首行缩进的就是使用<code>&amp;emsp;&amp;emsp;</code>HTML转义字符来实现的。换行可以通过<code>&lt;br&gt;</code>标签实现。</p>
+<h4 id="0x05-任务列表"><a href="#0x05-任务列表" class="headerlink" title="0x05 任务列表"></a>0x05 任务列表</h4><p>&emsp;&emsp;初学markdown的时候肯定会接触到列表的语法使用<code>-</code>来生成无序列表，<code>1.</code>来生成有序列表。</p>
+<ul>
+<li>无序列表1</li>
+<li>无序列表2</li>
+<li>无序列表3</li>
+</ul>
+<ol>
+<li>有序列表1</li>
+<li>有序列表2</li>
+<li>有序列表3</li>
+</ol>
+<p>&emsp;&emsp;其实还有一种列表叫任务列表</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> 写好文档</li>
+<li style="list-style: none"><input type="checkbox"> 洗衣服</li>
+<li style="list-style: none"><input type="checkbox" checked> 买水果</li>
+</ul>
+<p>以上效果的markdown代码为，可以在Github等网站使用</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>[ ] 写好文档</span><br><span class="line"><span class="bullet">- </span>[ ] 洗衣服</span><br><span class="line"><span class="bullet">- </span>[x] 买水果</span><br></pre></td></tr></table></figure>
+<h4 id="0x06-diff语法"><a href="#0x06-diff语法" class="headerlink" title="0x06 diff语法"></a>0x06 diff语法</h4><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+ 新增</span></span><br><span class="line"><span class="deletion">- 删除</span></span><br></pre></td></tr></table></figure>
+<p>diff语法可以用在需要展示代码或者版本变更的地方</p>
+</div></article></div></main><footer><div class="paginator"><a href="/2017/09/20/sort和sorted/" class="prev">prev_post</a><a href="/2017/07/23/字典写入csv文件中出现多余空行的解决办法/" class="next">next_post</a></div><div class="copyright"><p>© 2015 - 2018 <a href="http://yoursite.com">gamblenull</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>

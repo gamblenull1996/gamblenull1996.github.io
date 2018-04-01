@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> sort和sorted的区别 · 权奥</title><meta name="description" content="sort和sorted的区别 - gamblenull"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="权奥"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/gamblenull1996" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">sort和sorted的区别</h1><div class="post-info">Sep 20, 2017</div><div class="post-content"><h4 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h4><hr>
+
+<p>&emsp;&emsp;上周面试绿盟的测试开发岗的时候，面试官问我对于<code>list</code>来说<code>sort</code>和<code>sorted</code>有什么区别，我之前确实没有研究过，便说我不会，这两天看了点资料还解决了一个问题，在这里记录一下。</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x.sort()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line">Out[<span class="number">3</span>]: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+<p>以上的代码简单的说明了<code>sort</code>的用法，调用<code>sort</code>之后会修改原<code>list</code>。来对比着看一下<code>sorted</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>y = [<span class="number">10</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sorted(y)</span><br><span class="line">Out[<span class="number">5</span>]: [<span class="number">2</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">10</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y</span><br><span class="line">Out[<span class="number">6</span>]: [<span class="number">10</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<p>可以看到<code>sorted</code>并不会修改原’list’,其实是<code>copy</code>了一份，正是因为<code>copy</code>操作一般来说<code>sorted</code>会比<code>sort</code>慢一些。</p>
+<h4 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h4><hr>
+
+<h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>设有n个正整数，将他们连接成一排，组成一个最大的多位整数。<br>如:n=3时，3个整数13,312,343,连成的最大整数为34331213。<br>如:n=4时,4个整数7,13,4,246连接成的最大整数为7424613。<br>输入描述:<br>有多组测试样例，每组测试样例包含两行，第一行为一个整数N（N&lt;=100），第二行包含N个数(每个数不超过1000，空格分开)。<br>输出描述:<br>每组数据输出一个表示最大的整数。</p>
+<blockquote>
+<p>示例1<br>输入</p>
+</blockquote>
+<p>2<br>12 123<br>4<br>7 13 4 246</p>
+<blockquote>
+<p>输出</p>
+</blockquote>
+<p>12312<br>7424613</p>
+<hr>
+
+<p><a href="https://www.nowcoder.com/practice/a6a656249f404eb498d16b2f8eaa2c60?tpId=85&amp;tqId=29898&amp;tPage=4&amp;rp=4&amp;ru=/ta/2017test&amp;qru=/ta/2017test/question-ranking" target="_blank" rel="noopener">牛客网题目地址</a></p>
+<hr>
+
+<p>解决上述问题，python只需要四行代码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">n = raw_input()</span><br><span class="line">x = raw_input().split(<span class="string">' '</span>)</span><br><span class="line">x.sort(cmp=<span class="keyword">lambda</span> x,y:cmp(x+y, y+x), reverse=<span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">""</span>.join(x)</span><br></pre></td></tr></table></figure>
+<p>其实就是用到了<code>sort</code>中的<code>cmp</code>参数可以自定义比较函数，在就是<code>reverse</code>参数设为<code>True</code>降序排列。</p>
+</div></article></div></main><footer><div class="paginator"><a href="/2017/09/03/markdown小技巧/" class="next">next_post</a></div><div class="copyright"><p>© 2015 - 2018 <a href="http://yoursite.com">gamblenull</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
